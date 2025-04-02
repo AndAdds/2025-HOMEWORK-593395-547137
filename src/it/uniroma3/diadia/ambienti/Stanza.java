@@ -141,8 +141,8 @@ public class Stanza {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		boolean trovato;
 		trovato = false;
-		for (int i = 0; i<numeroAttrezzi; i++) {
-			if (attrezzi[i].getNome().equals(nomeAttrezzo))
+		for (int i = 0; i<numeroAttrezzi ;i++ ) {
+ 			if (attrezzi[i].getNome().equals(nomeAttrezzo))
 				trovato = true;
 		}
 		return trovato;

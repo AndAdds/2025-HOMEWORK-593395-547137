@@ -72,7 +72,6 @@ public class DiaDia {
 			if (this.partita.vinta()) {
 				System.out.println("Hai vinto!");
 			}
-			fine();
 			return true;
 		}
 		return false;
@@ -82,22 +81,15 @@ public class DiaDia {
 	 * restituisce true se riesce a posare l'attrezzo, false altrimenti
 	 */
 	private boolean posa(String nomeAttrezzo) {
-		if(this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
-			this.partita.getStanzaCorrente().addAttrezzo(this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo));
-			this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
-			return true;
-		}
+		
 		return false;
 	}
 	
 	/*
 		restituisce true se riesce a prendere l'attrezzo, false altrimenti
 	*/	
-	private void prendi(String nomeAttrezzo) {
-		if(this.partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo)) {
-			this.partita.getGiocatore().getBorsa().addAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
-			this.partita.getStanzaCorrente().removeAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));			
-		}
+	private boolean prendi(String nomeAttrezzo) {
+		return false;
 	}
 
 	// implementazioni dei comandi dell'utente:
@@ -127,8 +119,7 @@ public class DiaDia {
 			int cfu = this.partita.getGiocatore().getCfu();
 			this.partita.getGiocatore().setCfu(--cfu);
 		}
-		System.out.println(this.partita.getStanzaCorrente().getDescrizione());
-		System.out.println(this.partita.getGiocatore().getBorsa());
+		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
 
 	/**
@@ -140,6 +131,7 @@ public class DiaDia {
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
+		IOConsole console = new IOConsole();
 		gioco.gioca();
 	}
 }
