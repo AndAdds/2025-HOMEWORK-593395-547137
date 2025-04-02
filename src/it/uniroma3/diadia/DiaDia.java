@@ -81,7 +81,11 @@ public class DiaDia {
 	 * restituisce true se riesce a posare l'attrezzo, false altrimenti
 	 */
 	private boolean posa(String nomeAttrezzo) {
-		
+		if(this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
+ 			this.partita.getStanzaCorrente().addAttrezzo(this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo));
+ 			this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+ 			return true;
+ 		}
 		return false;
 	}
 	
@@ -89,6 +93,11 @@ public class DiaDia {
 		restituisce true se riesce a prendere l'attrezzo, false altrimenti
 	*/	
 	private boolean prendi(String nomeAttrezzo) {
+		if(this.partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo)) {
+ 			this.partita.getGiocatore().getBorsa().addAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
+ 			this.partita.getStanzaCorrente().removeAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));	
+ 			return true;
+ 		}
 		return false;
 	}
 
