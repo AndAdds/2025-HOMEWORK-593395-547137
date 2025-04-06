@@ -10,9 +10,9 @@ import it.uniroma3.diadia.ambienti.Stanza;
  *
  * Questa e' la classe principale crea e istanzia tutte le altre
  *
- * @author docente di POO (da un'idea di Michael Kolling and David J. Barnes)
  * 
- * @version base
+ * 
+ * @version versione.a
  */
 
 public class DiaDia {
@@ -62,9 +62,9 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto(io);
 		else if (comandoDaEseguire.getNome().equals("prendi"))
-			this.prendi(comandoDaEseguire.getParametro());
+			this.prendi(comandoDaEseguire.getParametro(),io);
 		else if (comandoDaEseguire.getNome().equals("posa"))
-			this.posa(comandoDaEseguire.getParametro());
+			this.posa(comandoDaEseguire.getParametro(),io);
 		else
 			io.mostraMessaggio("Comando sconosciuto");
 		if (this.partita.isFinita()) {
@@ -79,10 +79,12 @@ public class DiaDia {
 	/*
 	 * restituisce true se riesce a posare l'attrezzo, false altrimenti
 	 */
-	private boolean posa(String nomeAttrezzo) {
+	private boolean posa(String nomeAttrezzo, IOConsole io) {
 		if(this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
  			this.partita.getStanzaCorrente().addAttrezzo(this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo));
  			this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+ 			io.mostraMessaggio("l'oggetto: "+ nomeAttrezzo + " è stato posato");
+ 			io.mostraMessaggio(""+this.partita.getStanzaCorrente());
  			return true;
  		}
 		return false;
@@ -91,10 +93,12 @@ public class DiaDia {
 	/*
 		restituisce true se riesce a prendere l'attrezzo, false altrimenti
 	*/	
-	private boolean prendi(String nomeAttrezzo) {
+	private boolean prendi(String nomeAttrezzo, IOConsole io) {
 		if(this.partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo)) {
  			this.partita.getGiocatore().getBorsa().addAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
  			this.partita.getStanzaCorrente().removeAttrezzo(this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));	
+ 			io.mostraMessaggio("l'oggetto: "+ nomeAttrezzo + " è stato preso");
+ 			io.mostraMessaggio(""+this.partita.getGiocatore().getBorsa());
  			return true;
  		}
 		return false;

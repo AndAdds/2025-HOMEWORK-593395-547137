@@ -7,7 +7,7 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 /**
  * Questa classe modella una partita del gioco
  *
- * @author docente di POO
+ * 
  * @see Stanza
  * @version base
  */
