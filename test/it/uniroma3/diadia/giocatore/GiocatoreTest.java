@@ -27,4 +27,9 @@ class GiocatoreTest {
     void testBorsaNonNull() {
         assertNotNull(giocatore.getBorsa());
     }
+    
+    @Test
+    void testStampaDescrizione() {
+    	System.out.println(giocatore);
+    }
 }

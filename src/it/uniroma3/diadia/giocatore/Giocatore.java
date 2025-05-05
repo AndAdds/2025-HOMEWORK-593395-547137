@@ -23,5 +23,13 @@ public class Giocatore {
 	public Borsa getBorsa() {
 		return borsa;
 	}
+	
+	public String toString() {
+		StringBuilder risultato = new StringBuilder();
+		risultato.append("cfu rimasti: " + this.cfu);
+		risultato.append("\n"+this.borsa.toString());
+		return risultato.toString();
+	}
+	
 
 }
