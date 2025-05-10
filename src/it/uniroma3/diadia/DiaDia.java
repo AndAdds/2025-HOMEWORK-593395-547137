@@ -2,8 +2,6 @@ package it.uniroma3.diadia;
 
 import java.util.Scanner;
 
-import it.uniroma3.diadia.IOConsole.IO;
-import it.uniroma3.diadia.IOConsole.IOConsole;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
@@ -35,11 +33,9 @@ public class DiaDia {
 	private Partita partita;
 	private IO io;
 
-	public DiaDia() {
-		this.partita = new Partita();
-	}
 
 	public DiaDia(IO console) {
+		this.partita = new Partita();
 		this.io = console;
 	}
 
